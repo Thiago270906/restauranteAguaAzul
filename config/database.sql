@@ -61,14 +61,6 @@ CREATE TABLE galeria (
         REFERENCES categorias(id)
 );
 
-CREATE TABLE banners (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(200),
-    subtitulo TEXT,
-    imagem VARCHAR(255),
-    ativo BOOLEAN DEFAULT TRUE
-);
-
 CREATE TABLE configuracoes (
     id INT PRIMARY KEY,
     nome_restaurante VARCHAR(150),
