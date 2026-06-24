@@ -42,6 +42,42 @@ class AuthController
         }
     }
 
+    public function showRegister()
+    {
+        require_once __DIR__ . '/../views/auth/register.php';
+    }
+
+    public function register()
+    {
+        try {
+
+            $nome = trim($_POST['nome']);
+            $email = trim($_POST['email']);
+            $senha = trim($_POST['senha']);
+            $telefone = trim($_POST['telefone']);
+            $cargo = 'cliente';
+
+            $this->service->registerProcess(
+                $nome,
+                $email,
+                $senha,
+                $cargo,
+                $telefone
+            );
+
+            $_SESSION['sucesso'] =
+                "Cadastro realizado com sucesso.";
+
+            header("Location: index.php?action=showLogin");
+
+            exit;
+
+        }catch(Exception $e) {
+
+            die($e->getMessage());
+        }
+    }
+
     public function logout()
     {
         session_destroy();

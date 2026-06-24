@@ -79,7 +79,7 @@
                     </div>
 
                     <!-- Conteúdo -->
-                    <div class="p-10 md:p-12">
+                    <div class="px-10 py-5">
 
                         <div class="text-center">
 
@@ -108,55 +108,66 @@
                 <?php endif; ?>
 
                 <form
-                    action="index.php?action=login"
+                    action="index.php?action=register"
                     method="POST"
                     class="space-y-5 px-10 py-2 md:p-12">
 
                     <div>
+                        <label>Nome</label>
 
-                        <label class="block text-sm font-medium mb-2">
-                            Email
-                        </label>
+                        <input
+                            type="text"
+                            name="nome"
+                            required
+                            class="w-full border border-gray-300 rounded-xl px-4 py-3">
+                    </div>
+
+                    <div>
+                        <label>Email</label>
 
                         <input
                             type="email"
                             name="email"
                             required
-                            class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-[#457AA6]">
-
+                            class="w-full border border-gray-300 rounded-xl px-4 py-3">
                     </div>
 
                     <div>
+                        <label>Telefone</label>
 
-                        <label class="block text-sm font-medium mb-2">
-                            Senha
-                        </label>
+                        <input
+                            type="text"
+                            name="telefone"
+                            class="w-full border border-gray-300 rounded-xl px-4 py-3">
+                    </div>
+
+                    <div>
+                        <label>Senha</label>
 
                         <input
                             type="password"
                             name="senha"
                             required
-                            class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-[#457AA6]">
-
+                            class="w-full border border-gray-300 rounded-xl px-4 py-3">
                     </div>
 
                     <button
                         type="submit"
-                        class="w-full bg-[#F55F12] hover:bg-[#d94d07] transition text-white py-3 rounded-xl font-semibold">
+                        class="w-full bg-[#F55F12] text-white py-2 rounded-xl">
 
-                        Entrar
+                        Cadastrar
 
                     </button>
 
                 </form>
 
-                <div class="text-center mt-6">
+                <div class="text-center">
 
                     <a
-                        href="index.php?action=showRegister"
+                        href="index.php?action=showLogin"
                         class="text-[#457AA6] font-medium hover:underline">
 
-                        Não possui conta? Cadastre-se
+                        Já possui conta? Login
 
                     </a>
 

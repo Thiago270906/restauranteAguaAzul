@@ -32,15 +32,48 @@ class AuthRepository
         $usuario = new Usuario(
             $dados['nome'],
             $dados['email'],
-            $dados['senha_hash'],
+            $dados['senha'],
             $dados['cargo'],
             $dados['telefone']
         );
 
-        $usuario->setId($dados['id_usuario']);
+        $usuario->setId($dados['id']);
 
         return $usuario;
     }
+public function cadastrar(Usuario $usuario): bool
+{
+    $stmt = $this->conn->prepare("
+        INSERT INTO usuarios
+        (
+            nome,
+            email,
+            senha,
+            cargo,
+            telefone
+        )
+        VALUES
+        (
+            ?, ?, ?, ?, ?
+        )
+    ");
+
+    $resultado = $stmt->execute([
+        $usuario->getNome(),
+        $usuario->getEmail(),
+        $usuario->getSenha(),
+        $usuario->getCargo(),
+        $usuario->getTelefone()
+    ]);
+
+    if(!$resultado)
+    {
+        var_dump($stmt->errorInfo());
+        die();
+    }
+
+    return true;
+}
 }
 
 ?>

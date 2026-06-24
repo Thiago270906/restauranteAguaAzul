@@ -35,6 +35,33 @@ class AuthService
 
         return $usuario;
     }
+
+    public function registerProcess(
+        string $nome,
+        string $email,
+        string $senha,
+        string $cargo,
+        ?string $telefone
+    )
+    {
+
+        $senha = password_hash(
+            $senha,
+            PASSWORD_DEFAULT
+        );
+
+        $usuario = new Usuario(
+            $nome,
+            $email,
+            $senha,
+            $cargo,
+            $telefone
+        );
+
+        $this->repository->cadastrar($usuario);
+
+        return true;
+    }
 }
 
 ?>

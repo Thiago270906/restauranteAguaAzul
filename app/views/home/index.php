@@ -65,13 +65,27 @@
                 </ul>
 
                 <!-- Login Desktop -->
-                <a
-                    href="index.php?action=showLogin"
-                    class="hidden md:block bg-[#F55F12] border border-[#CC4500] text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition">
+                <?php if(isset($_SESSION['usuario'])): ?>
 
-                    Login
+                    <a
+                        href="index.php?action=logout"
+                        class="hidden md:block bg-red-600 border border-red-700 text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition">
 
-                </a>
+                        Logout
+
+                    </a>
+
+                <?php else: ?>
+
+                    <a
+                        href="index.php?action=showLogin"
+                        class="hidden md:block bg-[#F55F12] border border-[#CC4500] text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition">
+
+                        Login
+
+                    </a>
+
+                <?php endif; ?>
 
                 <!-- Espaçador Mobile -->
                 <div class="w-8 md:hidden"></div>
@@ -119,13 +133,27 @@
 
             <li class="pt-5">
 
-                <a
-                    href="#"
-                    class="block text-center bg-[#F55F12] text-white py-3 rounded-full">
+                <?php if(isset($_SESSION['usuario'])): ?>
 
-                    Login
+                    <a
+                        href="index.php?action=logout"
+                        class="block text-center bg-red-600 text-white py-3 rounded-full">
 
-                </a>
+                        Logout
+
+                    </a>
+
+                <?php else: ?>
+
+                    <a
+                        href="index.php?action=showLogin"
+                        class="block text-center bg-[#F55F12] text-white py-3 rounded-full">
+
+                        Login
+
+                    </a>
+
+                <?php endif; ?>
 
             </li>
 
