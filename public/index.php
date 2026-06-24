@@ -12,6 +12,16 @@ switch ($action) {
         $controller->index();
         break;
 
+    case 'showLogin':
+        $controller = new AuthController();
+        $controller->showLogin();
+        break;
+
+    case 'login':
+        $controller = new AuthController();
+        $controller->login();
+        break;
+
     default:
         echo "404 - Página não encontrada";
 }
