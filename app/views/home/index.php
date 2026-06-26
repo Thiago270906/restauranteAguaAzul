@@ -9,6 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
     <style>
         body {
@@ -39,8 +40,10 @@
                     id="menuBtn"
                     class="md:hidden text-white text-3xl">
 
-                    ☰
-
+                    <span class="material-symbols-outlined text-white">
+                        menu
+                    </span>
+                    
                 </button>
 
                 <!-- Logo -->
@@ -64,26 +67,52 @@
 
                 </ul>
 
-                <!-- Login Desktop -->
                 <?php if(isset($_SESSION['usuario'])): ?>
 
-                    <a
-                        href="index.php?action=logout"
-                        class="hidden md:block bg-red-600 border border-red-700 text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition">
+                <div class="relative hidden md:block">
 
-                        Logout
+                    <!-- Botão do usuário -->
+                    <button
+                        id="userBtn"
+                        class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+                        transition flex items-center justify-center">
 
-                    </a>
+                        <span class="material-symbols-outlined text-white">
+                            account_circle
+                        </span>
 
-                <?php else: ?>
+                    </button>
 
-                    <a
-                        href="index.php?action=showLogin"
-                        class="hidden md:block bg-[#F55F12] border border-[#CC4500] text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition">
+                    <!-- Dropdown -->
+                    <div
+                        id="userDropdown"
+                        class="hidden absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-xl overflow-hidden z-50">
 
-                        Login
+                        <a href="index.php?action=configuracoes"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition">
 
-                    </a>
+                            <span class="material-symbols-outlined text-gray-600">
+                                settings
+                            </span>
+
+                            Configurações
+
+                        </a>
+
+                        <a href="index.php?action=logout"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-red-50 hover:text-red-600 transition">
+
+                            <span class="material-symbols-outlined">
+                                logout
+                            </span>
+
+                            Sair
+
+                        </a>
+
+                    </div>
+
+                </div>
 
                 <?php endif; ?>
 
@@ -117,45 +146,80 @@
                 id="closeMenu"
                 class="text-2xl">
 
-                ✕
+                <span class="material-symbols-outlined text-gray-500">
+                    close
+                </span>
 
             </button>
 
         </div>
+        <div class="flex flex-col h-[calc(100%-73px)]">
 
-        <ul class="flex flex-col p-5 space-y-5">
+            <ul class="p-5 space-y-5">
 
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Cardápio</a></li>
-            <li><a href="#">Avaliações</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Contato</a></li>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Cardápio</a></li>
+                <li><a href="#">Avaliações</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
 
-            <li class="pt-5">
+            <div class="mt-auto border-t border-gray-200 p-5">
 
                 <?php if(isset($_SESSION['usuario'])): ?>
 
-                    <a
-                        href="index.php?action=logout"
-                        class="block text-center bg-red-600 text-white py-3 rounded-full">
+                <div class="mt-auto border-t border-gray-200 p-5">
 
-                        Logout
+                    <div class="flex flex-col">
 
-                    </a>
+                        <!-- Configurações -->
+                        <a href="index.php?action=configuracoes"
+                            class="flex items-center gap-3 px-3 py-3 rounded-lg
+                            hover:bg-gray-100 transition text-gray-700">
+
+                            <span class="material-symbols-outlined text-[22px]">
+                                settings
+                            </span>
+
+                            <span class="font-medium">
+                                Configurações
+                            </span>
+
+                        </a>
+
+                        <!-- Logout -->
+                        <a href="index.php?action=logout"
+                            class="flex items-center gap-3 px-3 py-3 rounded-lg
+                            hover:bg-red-50 text-red-600 transition">
+
+                            <span class="material-symbols-outlined text-[22px]">
+                                logout
+                            </span>
+
+                            <span class="font-medium">
+                                Sair
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
 
                 <?php else: ?>
 
-                    <a
-                        href="index.php?action=showLogin"
-                        class="block text-center bg-[#F55F12] text-white py-3 rounded-full">
+                <a href="index.php?action=showLogin"
+                    class="block text-center bg-[#F55F12]
+                    text-white py-3 rounded-full">
 
-                        Login
+                    Login
 
-                    </a>
+                </a>
 
                 <?php endif; ?>
 
-            </li>
+            </div>
+        </div>
 
         </ul>
 
