@@ -2,8 +2,10 @@
 
 session_start();
 
-require_once __DIR__ . '/../app/Controllers/HomeController.php';
-require_once __DIR__ . '/../app/Controllers/AuthController.php';
+require_once __DIR__ . '/../app/controllers/HomeController.php';
+require_once __DIR__ . '/../app/controllers/AuthController.php';
+require_once __DIR__ . '/../app/controllers/DashboardController.php';
+require_once __DIR__ . '/../app/helpers/AuthHelper.php';
 
 $action = $_GET['action'] ?? 'home';
 
@@ -37,6 +39,15 @@ switch ($action) {
     case 'logout':
         $controller = new AuthController();
         $controller->logout();
+        break;
+
+    case 'dashboard':
+
+        AuthHelper::requireAdmin();
+
+        $controller = new DashboardController();
+        $controller->index();
+
         break;
 
     default:

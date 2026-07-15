@@ -67,7 +67,7 @@
 
                 </ul>
 
-                <?php if(isset($_SESSION['usuario'])): ?>
+                <?php if (AuthHelper::user()): ?>
 
                 <div class="relative hidden md:block">
 
@@ -99,6 +99,21 @@
 
                         </a>
 
+                        <?php if (AuthHelper::isAdmin()): ?>
+
+                            <a href="index.php?action=dashboard"
+                                class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-blue-600 transition">
+
+                                <span class="material-symbols-outlined">
+                                    dashboard
+                                </span>
+
+                                Dashboard
+
+                            </a>
+
+                        <?php endif; ?>
+
                         <a href="index.php?action=logout"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-red-50 hover:text-red-600 transition">
 
@@ -113,6 +128,19 @@
                     </div>
 
                 </div>
+
+                <?php else: ?>
+
+                    <a href="index.php?action=showLogin"
+                        class="hidden md:flex items-center gap-2 text-white bg-orange-600 hover:bg-orange-500 px-5 py-3 rounded-full font-semibold transition">
+
+                        <span class="material-symbols-outlined">
+                            login
+                        </span>
+
+                        Entrar
+
+                    </a>
 
                 <?php endif; ?>
 

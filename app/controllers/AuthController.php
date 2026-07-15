@@ -27,7 +27,7 @@ class AuthController
 
             $usuario = $this->service->loginProcess($email, $senha);
 
-            header("Location: index.php?acao=home");
+            header("Location: index.php?action=home");
 
             exit;
 
