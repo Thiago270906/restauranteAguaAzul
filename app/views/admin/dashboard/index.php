@@ -85,13 +85,41 @@
 
             <!-- RODAPÉ -->
 
-            <div class="border-t border-white/20 p-6 text-sm text-white/70">
+            <div class="mt-auto border-t border-gray-200 p-5">
 
-                Restaurante Água Azul
+                <div class="flex flex-col">
 
-                <br>
+                    <!-- Configurações -->
+                    <a href="index.php?action=configuracoes"
+                        class="flex items-center gap-3 px-3 py-3 rounded-lg
+                        hover:bg-white/15 transition text-white">
 
-                Painel Administrativo
+                        <span class="material-symbols-outlined text-[22px]">
+                            settings
+                        </span>
+
+                        <span class="font-medium">
+                            Configurações
+                        </span>
+
+                    </a>
+
+                        <!-- Logout -->
+                    <a href="index.php?action=logout"
+                        class="flex items-center gap-3 px-3 py-3 rounded-lg
+                        hover:bg-red-500 bg-red-600 text-white transition">
+
+                        <span class="material-symbols-outlined text-[22px]">
+                            logout
+                        </span>
+
+                        <span class="font-medium">
+                            Sair
+                        </span>
+
+                    </a>
+
+                </div>
 
             </div>
 
@@ -181,29 +209,6 @@
                     do restaurante.
 
                 </p>
-
-                <div class="mt-10">
-
-                    <a href="/restauranteAguaAzul/public/"
-                        class="inline-flex items-center gap-3
-                        bg-[#F55F12]
-                        hover:bg-[#de530f]
-                        text-white
-                        px-7
-                        py-4
-                        rounded-full
-                        font-semibold
-                        transition">
-
-                        <span class="material-symbols-outlined">
-
-                            arrow_back
-
-                        </span>
-
-                        Voltar ao Website
-
-                    </a>
 
                 </div>
 

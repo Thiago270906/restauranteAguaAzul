@@ -162,7 +162,7 @@
     <!-- Menu Lateral -->
     <div
         id="mobileMenu"
-        class="fixed top-0 left-[-100%] w-72 h-full bg-white z-50 transition-all duration-300 shadow-xl">
+        class="fixed top-0 left-[-100%] w-72 h-full bg-[#457AA6] text-white z-50 transition-all duration-300 shadow-xl">
 
         <div class="flex justify-between items-center p-5 border-b">
 
@@ -174,7 +174,7 @@
                 id="closeMenu"
                 class="text-2xl">
 
-                <span class="material-symbols-outlined text-gray-500">
+                <span class="material-symbols-outlined text-gray-100">
                     close
                 </span>
 
@@ -196,14 +196,12 @@
 
                 <?php if(isset($_SESSION['usuario'])): ?>
 
-                <div class="mt-auto border-t border-gray-200 p-5">
-
                     <div class="flex flex-col">
 
                         <!-- Configurações -->
                         <a href="index.php?action=configuracoes"
                             class="flex items-center gap-3 px-3 py-3 rounded-lg
-                            hover:bg-gray-100 transition text-gray-700">
+                            hover:text-gray-100 transition text-white">
 
                             <span class="material-symbols-outlined text-[22px]">
                                 settings
@@ -218,7 +216,7 @@
                         <!-- Logout -->
                         <a href="index.php?action=logout"
                             class="flex items-center gap-3 px-3 py-3 rounded-lg
-                            hover:bg-red-50 text-red-600 transition">
+                            hover:bg-red-50 bg-red-600 text-white transition">
 
                             <span class="material-symbols-outlined text-[22px]">
                                 logout

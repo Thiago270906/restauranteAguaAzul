@@ -74,8 +74,7 @@ CREATE TABLE configuracoes (
     bairro VARCHAR(100),
     cidade VARCHAR(100),
     estado CHAR(2),
-    cep VARCHAR(10),
-    complemento VARCHAR(100)
+    cep VARCHAR(10)
 );
 
 CREATE TABLE horarios_funcionamento (
@@ -105,8 +104,8 @@ VALUES (
     'Restaurante Água Azul',
     '19999999999',
     'restauranteaguaazul@gmail.com',
-    'restauranteaguaazul',
-    'restauranteaguaazul',
+    'https://www.instagram.com/restauranteaguaazul/',
+    'https://www.facebook.com/restauranteaguaazul/',
     'Rua Antônio da Silveira Ramalho',
     '215',
     'Parque cidade nova',

@@ -5,17 +5,22 @@ session_start();
 require_once __DIR__ . '/../app/controllers/HomeController.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/controllers/DashboardController.php';
+require_once __DIR__ . '/../app/controllers/ConfiguracaoController.php';
 require_once __DIR__ . '/../app/helpers/AuthHelper.php';
 
 $action = $_GET['action'] ?? 'home';
 
 switch ($action) {
 
+//Website
     case 'home':
         $controller = new HomeController();
         $controller->index();
         break;
 
+
+
+//Login e Registros
     case 'showLogin':
         $controller = new AuthController();
         $controller->showLogin();
@@ -41,6 +46,9 @@ switch ($action) {
         $controller->logout();
         break;
 
+
+
+//Admin
     case 'dashboard':
 
         AuthHelper::requireAdmin();
@@ -49,6 +57,23 @@ switch ($action) {
         $controller->index();
 
         break;
+
+    case 'configuracoes':
+
+        AuthHelper::requireAdmin();
+
+        $controller = new ConfiguracaoController();
+        $controller->index();
+
+        break;
+
+    case 'atualizarConfiguracoes':
+
+        AuthHelper::requireAdmin();
+
+        $controller = new ConfiguracaoController();
+        $controller->atualizar();
+
 
     default:
         echo "404 - Página não encontrada";
