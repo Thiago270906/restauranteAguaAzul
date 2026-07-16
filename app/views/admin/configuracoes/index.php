@@ -66,7 +66,7 @@ require_once __DIR__ . '/../../../models/Configuracao.php';
             <div class="flex-1 p-5">
 
                 <p class="uppercase text-xs tracking-widest opacity-70 mb-4">
-                    Navegação
+                    Navegação de Gerenciamento
                 </p>
 
                 <a href="/restauranteAguaAzul/public/"
@@ -85,6 +85,74 @@ require_once __DIR__ . '/../../../models/Configuracao.php';
                     </span>
 
                 </a>
+                
+                <a href="index.php?action=dashboard"
+                    class="group flex items-center gap-4
+                    px-4 py-4
+                    rounded-xl
+                    hover:bg-white/15
+                    transition">
+
+                    <span class="material-symbols-outlined group-hover:-translate-x-1 transition">
+                        home
+                    </span>
+
+                    <span class="font-medium">
+                        Home
+                    </span>
+
+                </a>
+                
+                <a href="index.php?action="
+                    class="group flex items-center gap-4
+                    px-4 py-4
+                    rounded-xl
+                    hover:bg-white/15
+                    transition">
+
+                    <span class="material-symbols-outlined group-hover:-translate-x-1 transition">
+                        home
+                    </span>
+
+                    <span class="font-medium">
+                        Cardapio
+                    </span>
+
+                </a>
+                
+                <a href="index.php?action="
+                    class="group flex items-center gap-4
+                    px-4 py-4
+                    rounded-xl
+                    hover:bg-white/15
+                    transition">
+
+                    <span class="material-symbols-outlined group-hover:-translate-x-1 transition">
+                        home
+                    </span>
+
+                    <span class="font-medium">
+                        Avaliações
+                    </span>
+
+                </a>
+                
+                <a href="index.php?action="
+                    class="group flex items-center gap-4
+                    px-4 py-4
+                    rounded-xl
+                    hover:bg-white/15
+                    transition">
+
+                    <span class="material-symbols-outlined group-hover:-translate-x-1 transition">
+                        home
+                    </span>
+
+                    <span class="font-medium">
+                        Galeria de Fotos
+                    </span>
+
+                </a>
 
             </div>
 
@@ -96,7 +164,7 @@ require_once __DIR__ . '/../../../models/Configuracao.php';
 
                     <!-- Configurações -->
                     <a href="index.php?action=configuracoes"
-                        class="flex items-center gap-3 px-3 py-3 rounded-lg
+                        class="flex items-center gap-3 mb-2 px-3 py-3 rounded-lg
                         hover:bg-white/15 transition text-white">
 
                         <span class="material-symbols-outlined text-[22px]">
