@@ -106,7 +106,7 @@ require_once __DIR__ . '/../../../models/Configuracao.php';
                 </a>
                 
                 <!-- Cardápio: O ícone 'restaurant_menu' é perfeito para isso -->
-                <a href="index.php?action="
+                <a href="index.php?action=cardapioAdmin"
                     class="group flex items-center gap-4
                     px-4 py-4
                     rounded-xl
@@ -124,7 +124,7 @@ require_once __DIR__ . '/../../../models/Configuracao.php';
                 </a>
                 
                 <!-- Avaliações: Ícone 'rate_review' ou 'reviews' para feedback dos clientes -->
-                <a href="index.php?action="
+                <a href="index.php?action=avaliacaoAdmin"
                     class="group flex items-center gap-4
                     px-4 py-4
                     rounded-xl
@@ -142,7 +142,7 @@ require_once __DIR__ . '/../../../models/Configuracao.php';
                 </a>
                 
                 <!-- Galeria de Fotos: Ícone 'photo_library' para coleções de imagens -->
-                <a href="index.php?action="
+                <a href="index.php?action=galeriaAdmin"
                     class="group flex items-center gap-4
                     px-4 py-4
                     rounded-xl

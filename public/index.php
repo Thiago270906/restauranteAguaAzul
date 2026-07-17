@@ -5,6 +5,7 @@ session_start();
 require_once __DIR__ . '/../app/controllers/HomeController.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/controllers/DashboardController.php';
+require_once __DIR__ . '/../app/controllers/CardapioController.php';
 require_once __DIR__ . '/../app/controllers/ConfiguracaoController.php';
 require_once __DIR__ . '/../app/helpers/AuthHelper.php';
 
@@ -54,6 +55,15 @@ switch ($action) {
         AuthHelper::requireAdmin();
 
         $controller = new DashboardController();
+        $controller->index();
+
+        break;
+
+    case 'cardapioAdmin':
+
+        AuthHelper::requireAdmin();
+
+        $controller = new CardapioController();
         $controller->index();
 
         break;

@@ -268,21 +268,11 @@
 
                 <h2 class="titulo text-4xl text-slate-800 mb-6">
 
-                    Bem-vindo!
-
                 </h2>
 
                 <p class="text-gray-600 leading-8 max-w-3xl">
 
-                    Este é o painel administrativo do Restaurante Água Azul.
-
-                    Aqui você poderá gerenciar produtos, categorias,
-                    reservas, usuários, pedidos e todas as informações
-                    do restaurante.
-
                 </p>
-
-                </div>
 
             </div>
 
