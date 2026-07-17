@@ -63,6 +63,7 @@
                     Navegação de Gerenciamento
                 </p>
 
+                <!-- Voltar ao Website: Ícone de 'open_in_new' é ótimo para links externos -->
                 <a href="/restauranteAguaAzul/public/"
                     class="group flex items-center gap-4
                     px-4 py-4
@@ -71,7 +72,7 @@
                     transition">
 
                     <span class="material-symbols-outlined group-hover:-translate-x-1 transition">
-                        arrow_back
+                        open_in_new 
                     </span>
 
                     <span class="font-medium">
@@ -80,6 +81,7 @@
 
                 </a>
                 
+                <!-- Home: Mantivemos o 'home' pois é o mais indicado -->
                 <a href="index.php?action=dashboard"
                     class="group flex items-center gap-4
                     px-4 py-4
@@ -88,7 +90,7 @@
                     transition">
 
                     <span class="material-symbols-outlined group-hover:-translate-x-1 transition">
-                        home
+                        home 
                     </span>
 
                     <span class="font-medium">
@@ -97,6 +99,7 @@
 
                 </a>
                 
+                <!-- Cardápio: O ícone 'restaurant_menu' é perfeito para isso -->
                 <a href="index.php?action="
                     class="group flex items-center gap-4
                     px-4 py-4
@@ -105,15 +108,16 @@
                     transition">
 
                     <span class="material-symbols-outlined group-hover:-translate-x-1 transition">
-                        home
+                        restaurant_menu 
                     </span>
 
                     <span class="font-medium">
-                        Cardapio
+                        Cardápio
                     </span>
 
                 </a>
                 
+                <!-- Avaliações: Ícone 'rate_review' ou 'reviews' para feedback dos clientes -->
                 <a href="index.php?action="
                     class="group flex items-center gap-4
                     px-4 py-4
@@ -122,7 +126,7 @@
                     transition">
 
                     <span class="material-symbols-outlined group-hover:-translate-x-1 transition">
-                        home
+                        rate_review
                     </span>
 
                     <span class="font-medium">
@@ -131,6 +135,7 @@
 
                 </a>
                 
+                <!-- Galeria de Fotos: Ícone 'photo_library' para coleções de imagens -->
                 <a href="index.php?action="
                     class="group flex items-center gap-4
                     px-4 py-4
@@ -139,7 +144,7 @@
                     transition">
 
                     <span class="material-symbols-outlined group-hover:-translate-x-1 transition">
-                        home
+                        photo_library
                     </span>
 
                     <span class="font-medium">
