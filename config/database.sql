@@ -1,3 +1,4 @@
+DROP DATABASE restauranteAguaAzul;
 CREATE DATABASE restauranteAguaAzul;
 
 USE restauranteAguaAzul;
@@ -113,3 +114,20 @@ VALUES (
     'SP',
     '13845436'
 );
+
+INSERT INTO usuarios (
+    id,
+    nome,
+    email,
+    senha,
+    telefone,
+    cargo
+)
+VALUES (
+    1,
+    'Admin AguaÁzul',
+    'restauranteaguaazul@gmail.com',
+    '$2y$10$LLAHxRkmgDN/1yBW0335S.6MkC.uQxa2rugISGKBJcyjV6ZqMpCm.',
+    '19996921290',
+    'admin'
+)

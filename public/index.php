@@ -68,23 +68,57 @@ switch ($action) {
 
         break;
 
-    case 'configuracoes':
 
-        AuthHelper::requireAdmin();
+//Configurações
+case 'configuracoes':
 
-        $controller = new ConfiguracaoController();
-        $controller->index();
+    AuthHelper::requireAdmin();
 
-        break;
+    $controller = new ConfiguracaoController();
+    $controller->index();
 
-    case 'atualizarConfiguracoes':
+    break;
 
-        AuthHelper::requireAdmin();
+case 'atualizarConfiguracoes':
 
-        $controller = new ConfiguracaoController();
-        $controller->atualizar();
+    AuthHelper::requireAdmin();
+
+    $controller = new ConfiguracaoController();
+    $controller->atualizar();
+
+    break;
 
 
-    default:
-        echo "404 - Página não encontrada";
+
+//Horários de Funcionamento
+
+case 'cadastrarHorario':
+
+    AuthHelper::requireAdmin();
+
+    $controller = new ConfiguracaoController();
+    $controller->cadastrarHorario();
+
+    break;
+
+case 'editarHorario':
+
+    AuthHelper::requireAdmin();
+
+    $controller = new ConfiguracaoController();
+    $controller->editarHorario();
+
+    break;
+
+case 'excluirHorario':
+
+    AuthHelper::requireAdmin();
+
+    $controller = new ConfiguracaoController();
+    $controller->excluirHorario();
+
+    break;
+
+default:
+    echo "404 - Página não encontrada";
 }

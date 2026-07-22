@@ -522,6 +522,136 @@ require_once __DIR__ . '/../../../models/Configuracao.php';
 
                     </div>
 
+                    <!-- ======================== -->
+                    <!-- HORÁRIOS DE FUNCIONAMENTO -->
+                    <!-- ======================== -->
+
+                    <div class="mt-12">
+
+                        <div class="flex items-center justify-between mb-6">
+
+                            <div class="flex items-center gap-3">
+
+                                <span class="material-symbols-outlined text-[#457AA6]">
+                                    schedule
+                                </span>
+
+                                <div>
+
+                                    <h3 class="text-xl font-semibold text-slate-700">
+                                        Horários de Funcionamento
+                                    </h3>
+
+                                    <p class="text-sm text-gray-500 mt-1">
+                                        Gerencie os horários exibidos no website.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Só aparece no modo edição -->
+
+                            <button
+                                type="button"
+                                id="btnNovoHorario"
+                                class="hidden bg-[#457AA6] hover:bg-[#356487]
+                                text-white px-5 py-3 rounded-xl
+                                flex items-center gap-2 transition">
+
+                                <span class="material-symbols-outlined">
+                                    add
+                                </span>
+
+                                Novo Horário
+
+                            </button>
+
+                        </div>
+
+                        <?php if (empty($horarios)): ?>
+
+                            <div class="border-2 border-dashed border-gray-300 rounded-2xl p-10 text-center">
+
+                                <span class="material-symbols-outlined text-5xl text-gray-300 mb-3">
+                                    schedule
+                                </span>
+
+                                <h4 class="text-lg font-semibold text-slate-700 mb-2">
+                                    Nenhum horário cadastrado
+                                </h4>
+
+                                <p class="text-gray-500">
+                                    Clique em <strong>Editar</strong> para adicionar o primeiro horário.
+                                </p>
+
+                            </div>
+
+                        <?php else: ?>
+
+                            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                                <?php foreach ($horarios as $horario): ?>
+
+                                    <div
+                                        class="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-md transition">
+
+                                        <div class="flex justify-between items-start mb-6">
+
+                                            <div>
+
+                                                <h4 class="text-lg font-semibold text-slate-800">
+                                                    <?= htmlspecialchars($horario->getNomeDia()) ?>
+                                                </h4>
+
+                                                <p class="text-sm text-gray-500">
+                                                    Horário de Atendimento
+                                                </p>
+
+                                            </div>
+
+                                            <button
+                                                type="button"
+                                                data-id="<?= $horario->getId() ?>"
+                                                class="btnEditarHorario hidden w-10 h-10 rounded-xl
+                                                bg-[#457AA6]/10 hover:bg-[#457AA6]
+                                                text-[#457AA6] hover:text-white
+                                                flex items-center justify-center transition">
+
+                                                <span class="material-symbols-outlined text-[20px]">
+                                                    edit
+                                                </span>
+
+                                            </button>
+
+                                        </div>
+
+                                        <div class="flex items-center gap-3 text-lg font-semibold text-slate-700">
+
+                                            <span>
+                                                <?= substr($horario->getOpenAt(), 0, 5) ?>
+                                            </span>
+
+                                            <span class="material-symbols-outlined text-[#457AA6]">
+                                                arrow_forward
+                                            </span>
+
+                                            <span>
+                                                <?= substr($horario->getCloseAt(), 0, 5) ?>
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                <?php endforeach; ?>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                    </div>
+
                     <div class="mt-12 flex justify-end">
 
                         <button
@@ -544,6 +674,157 @@ require_once __DIR__ . '/../../../models/Configuracao.php';
                 </div>
 
             </form>
+                
+            <!-- =================================== -->
+            <!-- MODAL NOVO HORÁRIO -->
+            <!-- =================================== -->
+
+            <div id="modalHorario"
+                class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-6">
+
+                <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden">
+
+                    <!-- Cabeçalho -->
+                    <div class="flex items-center justify-between px-8 py-6 border-b">
+
+                        <div class="flex items-center gap-3">
+
+                            <span class="material-symbols-outlined text-3xl text-[#457AA6]">
+                                schedule
+                            </span>
+
+                            <div>
+
+                                <h3 class="text-2xl font-semibold text-slate-800">
+                                    Novo Horário
+                                </h3>
+
+                                <p class="text-sm text-gray-500">
+                                    Cadastre um horário de funcionamento.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="fecharModalHorario"
+                            class="w-10 h-10 rounded-full hover:bg-gray-100 transition">
+
+                            <span class="material-symbols-outlined">
+                                close
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                    <!-- Formulário -->
+
+                    <form
+                        action="index.php?action=cadastrarHorario"
+                        method="POST"
+                        class="p-8 space-y-6">
+
+                        <!-- Dia -->
+
+                        <div>
+
+                            <label class="block mb-2 font-medium text-gray-700">
+                                Dia da Semana
+                            </label>
+
+                            <select
+                                name="dia_semana"
+                                required
+                                class="w-full border border-gray-300 rounded-xl px-4 py-3
+                                focus:ring-2 focus:ring-[#457AA6] focus:outline-none">
+
+                                <option value="">Selecione...</option>
+
+                                <option value="0">Domingo</option>
+                                <option value="1">Segunda-feira</option>
+                                <option value="2">Terça-feira</option>
+                                <option value="3">Quarta-feira</option>
+                                <option value="4">Quinta-feira</option>
+                                <option value="5">Sexta-feira</option>
+                                <option value="6">Sábado</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Horários -->
+
+                        <div class="grid grid-cols-2 gap-5">
+
+                            <div>
+
+                                <label class="block mb-2 font-medium text-gray-700">
+                                    Horário de Abertura
+                                </label>
+
+                                <input
+                                    type="time"
+                                    name="open_at"
+                                    required
+                                    class="w-full border border-gray-300 rounded-xl px-4 py-3
+                                    focus:ring-2 focus:ring-[#457AA6] focus:outline-none">
+
+                            </div>
+
+                            <div>
+
+                                <label class="block mb-2 font-medium text-gray-700">
+                                    Horário de Fechamento
+                                </label>
+
+                                <input
+                                    type="time"
+                                    name="close_at"
+                                    required
+                                    class="w-full border border-gray-300 rounded-xl px-4 py-3
+                                    focus:ring-2 focus:ring-[#457AA6] focus:outline-none">
+
+                            </div>
+
+                        </div>
+
+                        <!-- Rodapé -->
+
+                        <div class="flex justify-end gap-3 pt-4 border-t">
+
+                            <button
+                                type="button"
+                                id="cancelarHorario"
+                                class="px-6 py-3 rounded-xl border border-gray-300 hover:bg-gray-100 transition">
+
+                                Cancelar
+
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="bg-[#457AA6] hover:bg-[#39688e]
+                                text-white px-8 py-3 rounded-xl
+                                flex items-center gap-2 transition">
+
+                                <span class="material-symbols-outlined">
+                                    save
+                                </span>
+
+                                Salvar
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
 
         </main>
 
@@ -551,6 +832,7 @@ require_once __DIR__ . '/../../../models/Configuracao.php';
 
 </div>
 
+<script src="/restauranteAguaAzul/public/assets/js/horario.js"></script>
 <script src="/restauranteAguaAzul/public/assets/js/configuracao.js"></script>
 <script src="/restauranteAguaAzul/public/assets/js/dashboard.js"></script>
 

@@ -1,62 +1,113 @@
 <?php
 
 require_once __DIR__ . '/../helpers/AuthHelper.php';
-require_once __DIR__ . '/../repositories/ConfiguracaoRepository.php';
-require_once __DIR__ . '/../models/Configuracao.php';
+require_once __DIR__ . '/../services/ConfiguracaoService.php';
 
 class ConfiguracaoController
 {
-    private ConfiguracaoRepository $repository;
+    private ConfiguracaoService $service;
 
     public function __construct()
     {
         AuthHelper::requireAdmin();
 
-        $this->repository = new ConfiguracaoRepository();
+        $this->service = new ConfiguracaoService();
     }
 
-    public function index()
+    /* =====================================================
+        CONFIGURAÇÕES
+    ===================================================== */
+
+    public function index(): void
     {
-        $configuracao = $this->repository->buscarConfiguracao();
+        $configuracao = $this->service->buscarConfiguracao();
+        $horarios = $this->service->listarHorarios();
 
         require __DIR__ . '/../views/admin/configuracoes/index.php';
     }
 
-    public function atualizar()
+    public function atualizar(): void
     {
-    
         try
         {
-            $configuracao = new Configuracao(
-                $_POST['nome_restaurante'],
-                $_POST['whatsapp'],
-                $_POST['email'],
-                $_POST['instagram'] ?: null,
-                $_POST['facebook'] ?: null,
-                $_POST['logradouro'],
-                $_POST['numero'],
-                $_POST['bairro'],
-                $_POST['cidade'],
-                $_POST['estado'],
-                $_POST['cep'],
-            );
-
-            // Mantém o mesmo ID do registro existente
-            $configuracao->setId(1);
-
-            $this->repository->atualizar($configuracao);
+            $this->service->atualizarConfiguracao($_POST);
 
             $_SESSION['sucesso'] = "Configurações atualizadas com sucesso.";
-
-            header("Location: index.php?action=configuracoes");
-            exit;
         }
         catch (Exception $e)
         {
             $_SESSION['erro'] = $e->getMessage();
-
-            header("Location: index.php?action=configuracoes");
-            exit;
         }
+
+        $this->redirecionar();
+    }
+
+    /* =====================================================
+        HORÁRIOS DE FUNCIONAMENTO
+    ===================================================== */
+
+    public function cadastrarHorario(): void
+    {
+        try
+        {
+            $this->service->cadastrarHorario($_POST);
+
+            $_SESSION['sucesso'] = "Horário cadastrado com sucesso.";
+        }
+        catch (Exception $e)
+        {
+            $_SESSION['erro'] = $e->getMessage();
+        }
+
+        $this->redirecionar();
+    }
+
+    public function editarHorario(): void
+    {
+        try
+        {
+            $this->service->atualizarHorario(
+                (int) $_POST['id'],
+                $_POST
+            );
+
+            $_SESSION['sucesso'] = "Horário atualizado com sucesso.";
+        }
+        catch (Exception $e)
+        {
+            $_SESSION['erro'] = $e->getMessage();
+        }
+
+        $this->redirecionar();
+    }
+
+    public function excluirHorario(): void
+    {
+        try
+        {
+            $id = isset($_POST['id'])
+                ? (int) $_POST['id']
+                : (int) $_GET['id'];
+
+            $this->service->excluirHorario($id);
+
+            $_SESSION['sucesso'] = "Horário removido com sucesso.";
+        }
+        catch (Exception $e)
+        {
+            $_SESSION['erro'] = $e->getMessage();
+        }
+
+        $this->redirecionar();
+    }
+
+    /* =====================================================
+        AUXILIAR
+    ===================================================== */
+
+    private function redirecionar(): void
+    {
+        header("Location: index.php?action=configuracoes");
+        exit;
     }
 }
